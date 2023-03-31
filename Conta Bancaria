@@ -1,0 +1,38 @@
+public class Conta {
+	int codigo;
+	double saldo;
+	double limite = 100;
+	
+	 Conta(int numero, double saldo) {
+		this.codigo += numero;
+		this.saldo 	+= saldo;
+		
+	}
+	void alterarLimite(double novoLimite) {
+		limite = novoLimite;
+	}
+	double emitirSaldo() {
+		return this.saldo;
+	}
+	void depositar(double valor) {
+		if(valor <= 0) {
+		}
+		else {
+			this.saldo += valor;
+		}
+	}
+	boolean sacar(double valor) {
+		if(valor <= 0) {
+			return false;
+		}
+		else {
+			if(valor > saldo) {
+				return false;
+			}
+			else {
+				saldo -= valor;
+				return true;
+			}
+		}
+	}
+}
