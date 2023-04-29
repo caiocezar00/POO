@@ -1,0 +1,44 @@
+package contacomextrato;
+
+public class ContaComExtrato {
+		Integer codigo;
+		double saldo;
+		double limite;
+		Integer cursor;
+		Double[] extrato;
+		
+		 ContaComExtrato(int codigo, double saldoInicial) {
+			this.extrato = new Double[20];
+			this.cursor = 0;
+			this.codigo = codigo;
+			this.saldo = 0.0;
+			this.depositar(saldoInicial);
+			this.limite = 100.0;
+			
+		}
+		void alterarLimite(double novoLimite) {
+			this.limite = novoLimite;
+		}
+		double emitirSaldo() {
+			return this.saldo + this.limite;
+		}
+		void depositar(double valor) {
+			// saber onde guardar o novo deposito?//
+			this.extrato[this.cursor] = valor;
+			this.cursor++;
+			//alterar saldo
+			this.saldo += valor;
+			}
+		boolean sacar(double valor) {
+			if(valor <= (saldo + limite)) {
+				this.extrato[this.cursor] = -valor;
+				this.cursor++;
+				this.saldo -= valor;
+				return true;
+			}
+				return false;
+		}
+		Double[] emitirExtrato() {
+			return this.extrato;	
+		}
+	}
